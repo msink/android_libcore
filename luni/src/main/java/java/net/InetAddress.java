@@ -925,6 +925,14 @@ public class InetAddress implements Serializable {
         return getByAddressInternal(null, ipAddress, scope_id);
     }
 
+    /**
+     *
+     *
+     */
+    public static void clearAddressCache() {
+        addressCache.clear();
+    }
+
     private static boolean isIPv4MappedAddress(byte[] ipAddress) {
         // Check if the address matches ::FFFF:d.d.d.d
         // The first 10 bytes are 0. The next to are -1 (FF).

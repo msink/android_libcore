@@ -132,7 +132,10 @@ public class Socket {
         // connect to each one and ignoring errors. There must be at least one
         // address, or getAllByName would have thrown UnknownHostException.
         InetAddress dstAddress;
+        long begin = System.currentTimeMillis();
         for (int i = 0; i < dstAddresses.length - 1; i++) {
+            if ((System.currentTimeMillis() - begin) > 12000)
+                break;
             dstAddress = dstAddresses[i];
             try {
                 checkDestination(dstAddress, dstPort);

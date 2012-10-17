@@ -126,6 +126,15 @@ class AddressCache {
         put(hostname, NO_ADDRESSES);
     }
 
+    /**
+     *
+     */
+    public void clear() {
+        synchronized (map) {
+            map.clear();
+        }
+    }
+
     private long customTtl(String propertyName, long defaultTtlNanos) {
         String ttlString = AccessController.doPrivileged(new PriviAction<String>(propertyName, null));
         if (ttlString == null) {
